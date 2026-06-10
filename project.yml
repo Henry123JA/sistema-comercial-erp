@@ -5,13 +5,7 @@ environment:
 packages:
   - name: erp
     functions:
-      - name: ping
-        runtime: python:3.12
-        web: true
-        limits:
-          timeout: 5000
-          memory: 256
-          
+
       - name: inventario
         runtime: 'python:3.12'
         web: true

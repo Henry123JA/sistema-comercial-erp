@@ -1,4 +1,4 @@
-import os
+from os import getenv
 from sqlmodel import SQLModel, Field, create_engine, Session
 from sqlalchemy.engine import URL
 from typing import Optional
@@ -7,7 +7,7 @@ from contextlib import contextmanager
 
 
 def get_engine():
-    database_url = os.getenv("DATABASE_URL")
+    database_url = getenv("DATABASE_URL")
 
     if database_url:
         if database_url.startswith("postgres://"):
@@ -24,12 +24,12 @@ def get_engine():
             pool_recycle=1800
         )
 
-    db_user = os.getenv("DB_USER")
-    db_pass = os.getenv("DB_PASSWORD")
-    db_name = os.getenv("DB_NAME")
-    db_host = os.getenv("DB_HOST")
-    db_port = int(os.getenv("DB_PORT", "5432"))
-    db_sslmode = os.getenv("DB_SSLMODE", "require")
+    db_user = getenv("DB_USER")
+    db_pass = getenv("DB_PASSWORD")
+    db_name = getenv("DB_NAME")
+    db_host = getenv("DB_HOST")
+    db_port = int(getenv("DB_PORT", "5432"))
+    db_sslmode = getenv("DB_SSLMODE", "require")
 
     db_url = URL.create(
         "postgresql+psycopg2",

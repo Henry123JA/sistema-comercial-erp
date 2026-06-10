@@ -1,9 +1,9 @@
 #import json
 from os import getenv
-#from sqlmodel import select
-#from modelos import Cliente, get_session #, init_db
+from sqlmodel import select
+from modelos import Cliente, get_session, init_db
 #from modelos import Cliente
-from sqlalchemy import create_engine, text
+#from sqlalchemy import create_engine, text
 
 _db_initialized = False
 
@@ -11,7 +11,7 @@ _db_initialized = False
 def ensure_db():
     global _db_initialized
     if not _db_initialized:
-        #init_db()
+        init_db()
         _db_initialized = True
 
 
@@ -63,52 +63,6 @@ def get_body_params(event):
 
 
 def main(event, context):
-    try:
-        database_url = getenv("DATABASE_URL")
-
-        if not database_url:
-            return {
-                "body": {
-                    "status": "error",
-                    "mensaje": "DATABASE_URL no existe"
-                }
-            }
-
-        database_url = database_url.replace(
-            "postgresql://",
-            "postgresql+psycopg2://",
-            1
-        )
-
-        engine = create_engine(
-            database_url,
-            pool_pre_ping=False,
-            pool_size=1,
-            max_overflow=0,
-            pool_timeout=5,
-            pool_recycle=1800,
-            connect_args={"connect_timeout": 5}
-        )
-
-        with engine.connect() as conn:
-            resultado = conn.execute(text("SELECT 1")).scalar()
-
-        return {
-            "body": {
-                "status": "db_ok",
-                "resultado": resultado
-            }
-        }
-
-    except Exception as e:
-        return {
-            "body": {
-                "status": "db_error",
-                "tipo": type(e).__name__,
-                "mensaje": str(e)
-            }
-        }
-    """
     ensure_db()
 
     method, path = get_method_and_path(event)
@@ -219,5 +173,5 @@ def main(event, context):
         "path_recibido": path,
         "method_recibido": method
     }, 404)
-    """
+    
     
