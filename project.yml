@@ -1,0 +1,41 @@
+environment:
+  DATABASE_URL: ${DATABASE_URL}
+  
+
+packages:
+  - name: erp
+    functions:
+      - name: ping
+        runtime: python:3.12
+        web: true
+        limits:
+          timeout: 5000
+          memory: 256
+          
+      - name: inventario
+        runtime: 'python:3.12'
+        web: true
+        limits:
+          timeout: 10000
+          memory: 256
+
+      - name: clientes
+        runtime: 'python:3.12'
+        web: true
+        limits:
+          timeout: 10000
+          memory: 256
+
+      - name: compras
+        runtime: 'python:3.12'
+        web: true
+        limits:
+          timeout: 10000
+          memory: 256
+
+      - name: ventas
+        runtime: 'python:3.12'
+        web: true
+        limits:
+          timeout: 10000
+          memory: 256

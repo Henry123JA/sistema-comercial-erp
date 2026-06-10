@@ -1,0 +1,8 @@
+
+**/__pycache__
+.git
+
+packages/erp/__init__.py
+packages/erp/requirements.txt
+packages/lib/__init__.py
+packages/lib/base_datos.py

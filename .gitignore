@@ -1,0 +1,52 @@
+# Entornos virtuales Python
+venv/
+.venv/
+env/
+.env/
+venv_erp/
+virtualenv/
+
+# Entornos virtuales dentro de funciones
+packages/**/venv/
+packages/**/.venv/
+packages/**/env/
+packages/**/venv_erp/
+packages/**/virtualenv/
+
+# Cache Python
+__pycache__/
+packages/**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Variables de entorno / secretos
+.env
+.env.*
+!.env.example
+
+# DigitalOcean Functions
+.deployed
+
+# VS Code
+.vscode/
+
+# Git / sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Tests / cachés
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node por si tuvieras algo frontend
+node_modules/
+dist/
+build/
